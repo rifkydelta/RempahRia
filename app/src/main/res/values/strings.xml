@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">RempahPedia</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ini_list">ini_list</string>
+    <string name="ini_scan">ini_scan</string>
+    <string name="ini_home">ini_home</string>
+    <string name="spice_name">Nama rempah</string>
+    <string name="latin_name">Nama latin rempah</string>
+
+    <string-array name="spice_name_list">
+        <item>Jahe</item>
+        <item>Kunyit</item>
+        <item>Lengkuas</item>
+        <item>Kencur</item>
+        <item>Kapulaga</item>
+        <item>Kayu Manis</item>
+        <item>Cengkeh</item>
+        <item>Pala</item>
+        <item>Jinten</item>
+        <item>Ketumbar</item>
+        <item>Serai</item>
+        <item>Daun Salam</item>
+        <item>Asam Jawa</item>
+        <item>Temu Lawak</item>
+        <item>Temu Hitam</item>
+        <item>Adas</item>
+        <item>Andaliman</item>
+        <item>Merica</item>
+        <item>Kapulaga</item>
+        <item>Bangle</item>
+    </string-array>
+
+    <string-array name="spice_latin_name_list">
+        <item>Zingiber officinale</item>
+        <item>Curcuma longa</item>
+        <item>Alpinia galanga</item>
+        <item>Kaempferia galanga</item>
+        <item>Elettaria cardamomum</item>
+        <item>Cinnamomum verum</item>
+        <item>Syzygium aromaticum</item>
+        <item>Myristica fragrans</item>
+        <item>Cuminum cyminum</item>
+        <item>Coriandrum sativum</item>
+        <item>Cymbopogon citratus</item>
+        <item>Syzygium polyanthum</item>
+        <item>Tamarindus indica</item>
+        <item>Curcuma xanthorrhiza</item>
+        <item>Curcuma aeruginosa</item>
+        <item>Foeniculum vulgare</item>
+        <item>Zanthoxylum acanthopodium</item>
+        <item>Piper nigrum</item>
+        <item>Amomum compactum</item>
+        <item>Zingiber cassumunar</item>
+    </string-array>
+
+    <string-array name="spice_photo_list">
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+        <item>@drawable/img_test</item>
+    </string-array>
+
+</resources>
