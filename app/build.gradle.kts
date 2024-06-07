@@ -51,4 +51,13 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+//    Implementation cameraX
+// CameraX core library using the camera2 implementation
+    val camerax_version = "1.1.0"
+    implementation("androidx.camera:camera-core:$camerax_version")
+    implementation("androidx.camera:camera-camera2:$camerax_version")
+    implementation("androidx.camera:camera-lifecycle:$camerax_version")
+    implementation("androidx.camera:camera-view:1.0.0-alpha28")
+    implementation("androidx.camera:camera-extensions:1.0.0-alpha28")
 }

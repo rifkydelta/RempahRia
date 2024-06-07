@@ -1,16 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Scan">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ini_scan"
-        android:textSize="24dp"
-        android:layout_gravity="center" />
+    <androidx.camera.view.PreviewView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cameraPreview">
+
+        <ImageButton
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="48sp"
+            android:id="@+id/capture"
+            android:src="@drawable/baseline_camera_24"
+            android:scaleType="centerCrop"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="#ffffff" />
+
+        <ImageButton
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_gravity="right"
+            android:layout_marginEnd="24sp"
+            android:layout_marginTop="24sp"
+            android:id="@+id/flash"
+            android:src="@drawable/baseline_bolt_24"
+            android:scaleType="centerCrop"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="#ffffff" />
+
+
+    </androidx.camera.view.PreviewView>
 
 </FrameLayout>
