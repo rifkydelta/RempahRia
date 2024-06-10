@@ -1,10 +1,10 @@
 package com.example.rempahpedia
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -61,7 +61,11 @@ class List : Fragment() {
     }
 
     private fun showSelectedSpices(spice: Spice) {
-        Toast.makeText(activity, "Kamu memilih " + spice.name, Toast.LENGTH_SHORT).show()
+        val intent = Intent(activity, DetailSpice::class.java)
+        intent.putExtra(DetailSpice.EXTRA_NAME, spice.name)
+        intent.putExtra(DetailSpice.EXTRA_LATIN_NAME, spice.latinName)
+        intent.putExtra(DetailSpice.EXTRA_PHOTO, spice.photo)
+        startActivity(intent)
     }
 
     override fun onDestroyView() {

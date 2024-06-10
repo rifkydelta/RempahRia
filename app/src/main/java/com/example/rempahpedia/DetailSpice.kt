@@ -1,20 +1,31 @@
 package com.example.rempahpedia
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.rempahpedia.databinding.ActivityDetailSpiceBinding
 
 class DetailSpice : AppCompatActivity() {
+    private lateinit var binding: ActivityDetailSpiceBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_detail_spice)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityDetailSpiceBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val name = intent.getStringExtra(EXTRA_NAME)
+        val latinName = intent.getStringExtra(EXTRA_LATIN_NAME)
+        val photo = intent.getIntExtra(EXTRA_PHOTO, -1)
+
+        binding.tvSpiceName.text = name
+        binding.tvSpiceLatin.text = latinName
+        if (photo != -1) {
+            binding.mainImage.setImageResource(photo)
         }
+    }
+
+    companion object {
+        const val EXTRA_NAME = "extra_name"
+        const val EXTRA_LATIN_NAME = "extra_latin_name"
+        const val EXTRA_PHOTO = "extra_photo"
     }
 }
