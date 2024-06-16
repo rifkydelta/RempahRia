@@ -10,8 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rempahpedia.databinding.FragmentListBinding
 
-class List : Fragment() {
+class List<T> : Fragment() {
 
+    val size: Int
+        get() {
+            TODO()
+        }
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
 
@@ -71,5 +75,9 @@ class List : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    operator fun get(position: Int): T {
+        TODO("Not yet implemented")
     }
 }

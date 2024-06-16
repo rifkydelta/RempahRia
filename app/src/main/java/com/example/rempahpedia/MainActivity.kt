@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.list -> {
-                    replaceFragment(List())
+                    replaceFragment(List<Any>())
                     true
                 }
 

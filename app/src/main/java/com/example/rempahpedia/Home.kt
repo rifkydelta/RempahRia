@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rempahpedia.databinding.FragmentHomeBinding
@@ -15,7 +16,14 @@ class Home : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var rvCardOne: RecyclerView
+    private lateinit var rvFunFact: RecyclerView
     private val list = ArrayList<Spice>()
+    private val funFacts = listOf(
+        "Fun Fact 1",
+        "Fun Fact 2",
+        "Fun Fact 3",
+        "Fun Fact 4"
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,12 +36,23 @@ class Home : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rvCardOne = binding.rvCardOne
+        rvFunFact = binding.rvFunFact
+
         rvCardOne.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rvCardOne.setHasFixedSize(true)
 
         list.addAll(getListSpices())
         showRecyclerList()
+
+        // Set up GridLayoutManager for rv_fun_fact
+        val layoutManager = GridLayoutManager(context, 2)
+        rvFunFact.layoutManager = layoutManager
+        rvFunFact.setHasFixedSize(true)
+
+        // Set adapter for rv_fun_fact
+        val funFactAdapter = FunFactAdapter(funFacts)
+        rvFunFact.adapter = funFactAdapter
     }
 
     private fun getListSpices(): ArrayList<Spice> {
