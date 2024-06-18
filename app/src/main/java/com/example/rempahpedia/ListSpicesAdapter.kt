@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ListSpicesAdapter(private val listSpices: ArrayList<Spice>) :
+class ListSpicesAdapter(private val listSpices: List<Spice>) :
     RecyclerView.Adapter<ListSpicesAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 

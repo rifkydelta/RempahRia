@@ -20,7 +20,7 @@
         android:theme="@style/Theme.RempahPedia"
         tools:targetApi="31">
         <activity
-            android:name=".DetailSpice"
+            android:name=".DetailSpiceActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

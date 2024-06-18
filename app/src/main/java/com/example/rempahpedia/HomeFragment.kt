@@ -6,24 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rempahpedia.databinding.FragmentHomeBinding
 
-class Home : Fragment() {
+class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
     private lateinit var rvCardOne: RecyclerView
     private lateinit var rvFunFact: RecyclerView
-    private val list = ArrayList<Spice>()
-    private val funFacts = listOf(
-        "Fun Fact 1",
-        "Fun Fact 2",
-        "Fun Fact 3",
-        "Fun Fact 4"
-    )
+
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,34 +38,28 @@ class Home : Fragment() {
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rvCardOne.setHasFixedSize(true)
 
-        list.addAll(getListSpices())
-        showRecyclerList()
+        // Observe spices data
+        viewModel.spices.observe(viewLifecycleOwner, Observer { spices ->
+            showRecyclerList(spices)
+        })
+
+        // Load spices data
+        viewModel.loadSpices(resources)
 
         // Set up GridLayoutManager for rv_fun_fact
         val layoutManager = GridLayoutManager(context, 2)
         rvFunFact.layoutManager = layoutManager
         rvFunFact.setHasFixedSize(true)
 
-        // Set adapter for rv_fun_fact
-        val funFactAdapter = FunFactAdapter(funFacts)
-        rvFunFact.adapter = funFactAdapter
+        // Observe fun facts data
+        viewModel.funFacts.observe(viewLifecycleOwner, Observer { funFacts ->
+            val funFactAdapter = FunFactAdapter(funFacts)
+            rvFunFact.adapter = funFactAdapter
+        })
     }
 
-    private fun getListSpices(): ArrayList<Spice> {
-        val dataName = resources.getStringArray(R.array.spice_name_list)
-        val dataLatinName = resources.getStringArray(R.array.spice_latin_name_list)
-        val dataPhoto = resources.obtainTypedArray(R.array.spice_photo_list)
-        val listSpices = ArrayList<Spice>()
-        for (i in dataName.indices) {
-            val spice = Spice(dataName[i], dataLatinName[i], dataPhoto.getResourceId(i, -1))
-            listSpices.add(spice)
-        }
-        dataPhoto.recycle()
-        return listSpices
-    }
-
-    private fun showRecyclerList() {
-        val randomList = list.shuffled().take(5)
+    private fun showRecyclerList(spices: List<Spice>) {
+        val randomList = spices.shuffled().take(5)
         val listHomeAdapter = ListHomeAdapter(randomList)
         rvCardOne.adapter = listHomeAdapter
 
@@ -81,10 +71,10 @@ class Home : Fragment() {
     }
 
     private fun showSelectedSpices(spice: Spice) {
-        val intent = Intent(activity, DetailSpice::class.java)
-        intent.putExtra(DetailSpice.EXTRA_NAME, spice.name)
-        intent.putExtra(DetailSpice.EXTRA_LATIN_NAME, spice.latinName)
-        intent.putExtra(DetailSpice.EXTRA_PHOTO, spice.photo)
+        val intent = Intent(activity, DetailSpiceActivity::class.java)
+        intent.putExtra(DetailSpiceActivity.EXTRA_NAME, spice.name)
+        intent.putExtra(DetailSpiceActivity.EXTRA_LATIN_NAME, spice.latinName)
+        intent.putExtra(DetailSpiceActivity.EXTRA_PHOTO, spice.photo)
         startActivity(intent)
     }
 

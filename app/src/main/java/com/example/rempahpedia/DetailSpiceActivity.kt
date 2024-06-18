@@ -1,11 +1,14 @@
 package com.example.rempahpedia
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.example.rempahpedia.databinding.ActivityDetailSpiceBinding
 
-class DetailSpice : AppCompatActivity() {
+class DetailSpiceActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailSpiceBinding
+    private val viewModel: DetailSpiceViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,11 +19,21 @@ class DetailSpice : AppCompatActivity() {
         val latinName = intent.getStringExtra(EXTRA_LATIN_NAME)
         val photo = intent.getIntExtra(EXTRA_PHOTO, -1)
 
-        binding.tvSpiceName.text = name
-        binding.tvSpiceLatin.text = latinName
-        if (photo != -1) {
-            binding.mainImage.setImageResource(photo)
-        }
+        viewModel.loadSpiceDetails(name, latinName, photo)
+
+        viewModel.spiceName.observe(this, Observer { name ->
+            binding.tvSpiceName.text = name
+        })
+
+        viewModel.latinName.observe(this, Observer { latinName ->
+            binding.tvSpiceLatin.text = latinName
+        })
+
+        viewModel.photoResId.observe(this, Observer { photoResId ->
+            if (photoResId != -1) {
+                binding.mainImage.setImageResource(photoResId)
+            }
+        })
     }
 
     companion object {

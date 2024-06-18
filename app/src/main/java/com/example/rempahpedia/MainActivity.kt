@@ -1,33 +1,28 @@
 package com.example.rempahpedia
 
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import com.example.rempahpedia.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val viewModel: MainViewModel by viewModels()
 
     private val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
-                Toast.makeText(this, "Permission request granted", Toast.LENGTH_LONG).show()
+                viewModel.showToastMessage("Permission request granted")
             } else {
-                Toast.makeText(this, "Permission request denied", Toast.LENGTH_LONG).show()
+                viewModel.showToastMessage("Permission request denied")
             }
+            viewModel.permissionGranted.value = isGranted
         }
-
-    private fun allPermissionsGranted() =
-        ContextCompat.checkSelfPermission(
-            this,
-            REQUIRED_PERMISSION
-        ) == PackageManager.PERMISSION_GRANTED
 
     companion object {
         const val REQUIRED_PERMISSION = android.Manifest.permission.CAMERA
@@ -37,26 +32,30 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(Home())
+        replaceFragment(HomeFragment())
 
-        if (!allPermissionsGranted()) {
-            requestPermissionLauncher.launch(REQUIRED_PERMISSION)
-        }
+        viewModel.permissionGranted.observe(this, Observer { isGranted ->
+            if (isGranted == false) {
+                requestPermissionLauncher.launch(REQUIRED_PERMISSION)
+            }
+        })
+
+        viewModel.checkPermission(REQUIRED_PERMISSION)
 
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
-                    replaceFragment(Home())
+                    replaceFragment(HomeFragment())
                     true
                 }
 
                 R.id.scan -> {
-                    replaceFragment(Scan())
+                    replaceFragment(ScanFragment())
                     true
                 }
 
                 R.id.list -> {
-                    replaceFragment(List<Any>())
+                    replaceFragment(ListFragment())
                     true
                 }
 

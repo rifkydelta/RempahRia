@@ -60,4 +60,11 @@ dependencies {
     implementation("androidx.camera:camera-lifecycle:$camerax_version")
     implementation("androidx.camera:camera-view:1.0.0-alpha28")
     implementation("androidx.camera:camera-extensions:1.0.0-alpha28")
+
+// import livescycle
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
+
+//    import fragment ktx
+    implementation("androidx.fragment:fragment-ktx:1.5.3")
 }
