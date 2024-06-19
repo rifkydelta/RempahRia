@@ -37,4 +37,17 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         app:tint="#ffffff" />
 
+    <ImageButton
+        android:id="@+id/gallery"
+        android:layout_width="36dp"
+        android:layout_height="80sp"
+        android:src="@drawable/gallery24"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:tint="#ffffff"
+        android:scaleType="fitCenter"
+        android:layout_gravity="start|bottom"
+        android:layout_marginStart="56sp"
+        android:layout_marginBottom="48sp" />
+
+
 </FrameLayout>
