@@ -1,5 +1,6 @@
 package com.example.rempahpedia
 
+import ListViewModel
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -39,25 +40,28 @@ class ListFragment : Fragment() {
         })
 
         // Load data spices
-        viewModel.loadSpices(resources)
+        viewModel.loadSpices()
     }
 
-    private fun showRecyclerList(spices: List<Spice>) {
+    private fun showRecyclerList(spices: List<Spices>) {
         val listSpicesAdapter = ListSpicesAdapter(spices)
         rvSpices.adapter = listSpicesAdapter
 
         listSpicesAdapter.setOnItemClickCallback(object : ListSpicesAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Spice) {
+            override fun onItemClicked(data: Spices) {
                 showSelectedSpices(data)
             }
         })
     }
 
-    private fun showSelectedSpices(spice: Spice) {
+    private fun showSelectedSpices(spice: Spices) {
         val intent = Intent(activity, DetailSpiceActivity::class.java)
         intent.putExtra(DetailSpiceActivity.EXTRA_NAME, spice.name)
-        intent.putExtra(DetailSpiceActivity.EXTRA_LATIN_NAME, spice.latinName)
-        intent.putExtra(DetailSpiceActivity.EXTRA_PHOTO, spice.photo)
+        intent.putExtra(DetailSpiceActivity.EXTRA_LATIN_NAME, spice.cientificName)
+        intent.putExtra(DetailSpiceActivity.EXTRA_PHOTO, spice.imageUrl1)
+        intent.putExtra(DetailSpiceActivity.EXTRA_DESCRIPTION, spice.description)
+        intent.putExtra(DetailSpiceActivity.EXTRA_UNIQUE_FACT, spice.uniqueFact)
+        intent.putExtra(DetailSpiceActivity.EXTRA_BENEFIT, spice.benefit)
         startActivity(intent)
     }
 

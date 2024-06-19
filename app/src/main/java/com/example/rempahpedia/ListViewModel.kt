@@ -1,25 +1,35 @@
-package com.example.rempahpedia
-
-import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.rempahpedia.ClassListResponse
+import com.example.rempahpedia.Spices
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ListViewModel : ViewModel() {
 
-    private val _spices = MutableLiveData<List<Spice>>()
-    val spices: LiveData<List<Spice>> get() = _spices
+    private val _spices = MutableLiveData<List<Spices>>()
+    val spices: LiveData<List<Spices>> get() = _spices
 
-    fun loadSpices(resources: Resources) {
-        val dataName = resources.getStringArray(R.array.spice_name_list)
-        val dataLatinName = resources.getStringArray(R.array.spice_latin_name_list)
-        val dataPhoto = resources.obtainTypedArray(R.array.spice_photo_list)
-        val listSpices = ArrayList<Spice>()
-        for (i in dataName.indices) {
-            val spice = Spice(dataName[i], dataLatinName[i], dataPhoto.getResourceId(i, -1))
-            listSpices.add(spice)
-        }
-        dataPhoto.recycle()
-        _spices.value = listSpices
+    fun loadSpices() {
+        RetrofitClient.apiService.getClassList().enqueue(object : Callback<ClassListResponse> {
+            override fun onResponse(
+                call: Call<ClassListResponse>,
+                response: Response<ClassListResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val classListResponse = response.body()
+                    val items = classListResponse?.classList?.values?.toList() ?: emptyList()
+                    _spices.postValue(items)
+                } else {
+                    // Handle unsuccessful response
+                }
+            }
+
+            override fun onFailure(call: Call<ClassListResponse>, t: Throwable) {
+                // Handle error
+            }
+        })
     }
 }

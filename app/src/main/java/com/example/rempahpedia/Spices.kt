@@ -1,11 +1,25 @@
 package com.example.rempahpedia
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import com.google.gson.annotations.SerializedName
 
-@Parcelize
-data class Spice(
+data class ClassListResponse(
+    @SerializedName("class_list")
+    val classList: Map<String, Spices>
+)
+
+data class Spices(
+    @SerializedName("benefit")
+    val benefit: String,
+    @SerializedName("cientific_name")
+    val cientificName: String,
+    @SerializedName("description")
+    val description: String,
+    @SerializedName("image_url1")
+    val imageUrl1: String,
+    @SerializedName("image_url2")
+    val imageUrl2: String,
+    @SerializedName("name")
     val name: String,
-    val latinName: String,
-    val photo: Int
-) : Parcelable
+    @SerializedName("unique_fact")
+    val uniqueFact: String
+)

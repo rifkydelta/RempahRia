@@ -44,37 +44,43 @@ class HomeFragment : Fragment() {
         })
 
         // Load spices data
-        viewModel.loadSpices(resources)
+        viewModel.loadSpices()
 
         // Set up GridLayoutManager for rv_fun_fact
         val layoutManager = GridLayoutManager(context, 2)
         rvFunFact.layoutManager = layoutManager
         rvFunFact.setHasFixedSize(true)
 
-        // Observe fun facts data
-        viewModel.funFacts.observe(viewLifecycleOwner, Observer { funFacts ->
-            val funFactAdapter = FunFactAdapter(funFacts)
-            rvFunFact.adapter = funFactAdapter
-        })
     }
 
-    private fun showRecyclerList(spices: List<Spice>) {
-        val randomList = spices.shuffled().take(5)
+    private fun showRecyclerList(spices: List<Spices>) {
+        val randomList = spices.shuffled().take(4)
         val listHomeAdapter = ListHomeAdapter(randomList)
+        val funFactAdapter = FunFactAdapter(randomList)
         rvCardOne.adapter = listHomeAdapter
+        rvFunFact.adapter = funFactAdapter
 
         listHomeAdapter.setOnItemClickCallback(object : ListHomeAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Spice) {
+            override fun onItemClicked(data: Spices) {
+                showSelectedSpices(data)
+            }
+        })
+
+        funFactAdapter.setOnItemClickCallback(object : ListHomeAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Spices) {
                 showSelectedSpices(data)
             }
         })
     }
 
-    private fun showSelectedSpices(spice: Spice) {
+    private fun showSelectedSpices(spice: Spices) {
         val intent = Intent(activity, DetailSpiceActivity::class.java)
         intent.putExtra(DetailSpiceActivity.EXTRA_NAME, spice.name)
-        intent.putExtra(DetailSpiceActivity.EXTRA_LATIN_NAME, spice.latinName)
-        intent.putExtra(DetailSpiceActivity.EXTRA_PHOTO, spice.photo)
+        intent.putExtra(DetailSpiceActivity.EXTRA_LATIN_NAME, spice.cientificName)
+        intent.putExtra(DetailSpiceActivity.EXTRA_PHOTO, spice.imageUrl1)
+        intent.putExtra(DetailSpiceActivity.EXTRA_DESCRIPTION, spice.description)
+        intent.putExtra(DetailSpiceActivity.EXTRA_UNIQUE_FACT, spice.uniqueFact)
+        intent.putExtra(DetailSpiceActivity.EXTRA_BENEFIT, spice.benefit)
         startActivity(intent)
     }
 

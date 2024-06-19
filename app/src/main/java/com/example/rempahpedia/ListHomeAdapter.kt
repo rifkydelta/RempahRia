@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlin.collections.List
+import com.bumptech.glide.Glide
 
-class ListHomeAdapter(private val listSpices: List<Spice>) :
+class ListHomeAdapter(private val listSpices: List<Spices>) :
     RecyclerView.Adapter<ListHomeAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -23,10 +23,12 @@ class ListHomeAdapter(private val listSpices: List<Spice>) :
     }
 
     override fun onBindViewHolder(holder: ListHomeAdapter.ListViewHolder, position: Int) {
-        val (name, latinName, photo) = listSpices[position]
-        holder.imageView.setImageResource(photo)
-        holder.textViewName.text = name
-        holder.textViewLatin.text = latinName
+        val spice = listSpices[position]
+        holder.textViewName.text = spice.name
+        holder.textViewLatin.text = spice.cientificName
+        Glide.with(holder.itemView.context)
+            .load(spice.imageUrl1)
+            .into(holder.imageView)
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listSpices[holder.adapterPosition]) }
     }
 
@@ -40,6 +42,6 @@ class ListHomeAdapter(private val listSpices: List<Spice>) :
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: Spice)
+        fun onItemClicked(data: Spices)
     }
 }

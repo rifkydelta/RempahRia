@@ -12,74 +12,8 @@
     <string name="load_more">Telusuri Rempah Lainnya</string>
     <string name="fakta_unik_rempah">Fakta Unik Rempah</string>
     <string name="highlights">Highlights</string>
+    <string name="benefit">Manfaat</string>
+    <string name="description">Deskripsi</string>
 
-    <string-array name="spice_name_list">
-        <item>Jahe</item>
-        <item>Kunyit</item>
-        <item>Lengkuas</item>
-        <item>Kencur</item>
-        <item>Kapulaga</item>
-        <item>Kayu Manis</item>
-        <item>Cengkeh</item>
-        <item>Pala</item>
-        <item>Jinten</item>
-        <item>Ketumbar</item>
-        <item>Serai</item>
-        <item>Daun Salam</item>
-        <item>Asam Jawa</item>
-        <item>Temu Lawak</item>
-        <item>Temu Hitam</item>
-        <item>Adas</item>
-        <item>Andaliman</item>
-        <item>Merica</item>
-        <item>Kapulaga</item>
-        <item>Bangle</item>
-    </string-array>
-
-    <string-array name="spice_latin_name_list">
-        <item>Zingiber officinale</item>
-        <item>Curcuma longa</item>
-        <item>Alpinia galanga</item>
-        <item>Kaempferia galanga</item>
-        <item>Elettaria cardamomum</item>
-        <item>Cinnamomum verum</item>
-        <item>Syzygium aromaticum</item>
-        <item>Myristica fragrans</item>
-        <item>Cuminum cyminum</item>
-        <item>Coriandrum sativum</item>
-        <item>Cymbopogon citratus</item>
-        <item>Syzygium polyanthum</item>
-        <item>Tamarindus indica</item>
-        <item>Curcuma xanthorrhiza</item>
-        <item>Curcuma aeruginosa</item>
-        <item>Foeniculum vulgare</item>
-        <item>Zanthoxylum acanthopodium</item>
-        <item>Piper nigrum</item>
-        <item>Amomum compactum</item>
-        <item>Zingiber cassumunar</item>
-    </string-array>
-
-    <string-array name="spice_photo_list">
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-        <item>@drawable/img_test</item>
-    </string-array>
 
 </resources>
