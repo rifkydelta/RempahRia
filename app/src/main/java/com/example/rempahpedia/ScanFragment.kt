@@ -3,11 +3,13 @@ package com.example.rempahpedia
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
 import androidx.fragment.app.Fragment
@@ -45,7 +47,11 @@ class ScanFragment : Fragment() {
         }
 
         binding.flash.setOnClickListener {
-            viewModel.toggleFlash()
+            viewModel.toggleFlash(requireContext())
+        }
+
+        binding.gallery.setOnClickListener {
+            pickImage.launch("image/*")
         }
     }
 
@@ -66,9 +72,11 @@ class ScanFragment : Fragment() {
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     lifecycleScope.launch {
+                        showLoading(true)
                         val compressedFile = compressImage(photoFile)
                         val multipartImage = convertFileToMultipart(compressedFile)
                         val response = viewModel.uploadImage(multipartImage)
+                        showLoading(false)
                         if (response != null) {
                             val intent = Intent(requireContext(), DetailSpiceActivity::class.java)
                             intent.putExtra("response", response)
@@ -98,9 +106,39 @@ class ScanFragment : Fragment() {
         return MultipartBody.Part.createFormData("image", file.name, requestFile)
     }
 
+    private fun showLoading(show: Boolean) {
+        binding.progressBar.visibility = if (show) View.VISIBLE else View.GONE
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         viewModel.shutdownCameraExecutor()
         _binding = null
     }
+
+    private val pickImage =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let {
+                val inputStream = requireContext().contentResolver.openInputStream(it)
+                val bitmap = BitmapFactory.decodeStream(inputStream)
+                // Save bitmap to file
+                val photoFile = File(requireContext().cacheDir, "${System.currentTimeMillis()}.jpg")
+                val outputStream = FileOutputStream(photoFile)
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+                outputStream.close()
+                // Upload the image
+                lifecycleScope.launch {
+                    showLoading(true)
+                    val compressedFile = compressImage(photoFile)
+                    val multipartImage = convertFileToMultipart(compressedFile)
+                    val response = viewModel.uploadImage(multipartImage)
+                    showLoading(false)
+                    if (response != null) {
+                        val intent = Intent(requireContext(), DetailSpiceActivity::class.java)
+                        intent.putExtra("response", response)
+                        startActivity(intent)
+                    }
+                }
+            }
+        }
 }

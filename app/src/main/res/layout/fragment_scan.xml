@@ -49,5 +49,11 @@
         android:layout_marginStart="56sp"
         android:layout_marginBottom="48sp" />
 
-
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center" />
+    
 </FrameLayout>

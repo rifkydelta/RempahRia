@@ -2,6 +2,7 @@ package com.example.rempahpedia
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.Preview
@@ -64,14 +65,22 @@ class ScanViewModel : ViewModel() {
         }, ContextCompat.getMainExecutor(context))
     }
 
-    fun toggleFlash() {
+    fun toggleFlash(context: Context) {
         flashEnabled = !flashEnabled
         imageCapture?.flashMode = if (flashEnabled) {
             ImageCapture.FLASH_MODE_ON
         } else {
             ImageCapture.FLASH_MODE_OFF
         }
+
+        val message = if (flashEnabled) {
+            "Flash is ON"
+        } else {
+            "Flash is OFF"
+        }
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
+
 
     suspend fun uploadImage(multipartImage: MultipartBody.Part): String? {
         return withContext(Dispatchers.IO) {
