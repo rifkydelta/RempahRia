@@ -107,7 +107,13 @@ class ScanFragment : Fragment() {
     }
 
     private fun showLoading(show: Boolean) {
-        binding.progressBar.visibility = if (show) View.VISIBLE else View.GONE
+        if (show) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.overlay.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+            binding.overlay.visibility = View.GONE
+        }
     }
 
     override fun onDestroyView() {
