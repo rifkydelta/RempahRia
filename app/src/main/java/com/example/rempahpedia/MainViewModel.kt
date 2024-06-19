@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
@@ -12,6 +13,20 @@ import kotlinx.coroutines.launch
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val permissionGranted = MutableLiveData<Boolean>()
+
+    // Tambahkan variabel untuk menyimpan fragment yang aktif
+    private val _currentFragment = MutableLiveData<FragmentTag>()
+    val currentFragment: LiveData<FragmentTag> = _currentFragment
+
+    // Fungsi untuk mengubah fragment yang aktif
+    fun setCurrentFragment(fragmentTag: FragmentTag) {
+        _currentFragment.value = fragmentTag
+    }
+
+    // Enum untuk tag fragment
+    enum class FragmentTag {
+        HOME, SCAN, LIST
+    }
 
     fun checkPermission(permission: String) {
         viewModelScope.launch {

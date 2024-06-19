@@ -39,7 +39,5 @@
                 android:layout_marginBottom="8dp" />
 
         </ScrollView>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

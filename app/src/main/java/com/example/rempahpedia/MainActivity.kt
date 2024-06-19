@@ -42,20 +42,32 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.checkPermission(REQUIRED_PERMISSION)
 
+        // Observasi currentFragment dari ViewModel
+        viewModel.currentFragment.observe(this, Observer { fragmentTag ->
+            fragmentTag?.let { tag ->
+                when (tag) {
+                    MainViewModel.FragmentTag.HOME -> replaceFragment(HomeFragment())
+                    MainViewModel.FragmentTag.SCAN -> replaceFragment(ScanFragment())
+                    MainViewModel.FragmentTag.LIST -> replaceFragment(ListFragment())
+                }
+            }
+        })
+
+        // Set listener untuk bottom navigation
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
-                    replaceFragment(HomeFragment())
+                    viewModel.setCurrentFragment(MainViewModel.FragmentTag.HOME)
                     true
                 }
 
                 R.id.scan -> {
-                    replaceFragment(ScanFragment())
+                    viewModel.setCurrentFragment(MainViewModel.FragmentTag.SCAN)
                     true
                 }
 
                 R.id.list -> {
-                    replaceFragment(ListFragment())
+                    viewModel.setCurrentFragment(MainViewModel.FragmentTag.LIST)
                     true
                 }
 
