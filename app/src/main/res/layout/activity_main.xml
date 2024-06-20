@@ -14,21 +14,18 @@
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="#5ac165"
+        android:background="#ffffff"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/apptitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/topBar"
+    <ImageView
+        android:id="@+id/imgTopBar"
+        android:layout_width="100dp"
+        android:layout_height="?attr/actionBarSize"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="@+id/topBar"
         app:layout_constraintStart_toStartOf="@+id/topBar"
-        app:layout_constraintTop_toTopOf="@+id/topBar" />
+        tools:ignore="MissingConstraints" />
 
     <FrameLayout
         android:id="@+id/frame_layout"

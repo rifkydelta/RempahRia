@@ -1,6 +1,7 @@
 package com.example.rempahpedia
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         replaceFragment(HomeFragment())
+        setTopBarVisibility(MainViewModel.FragmentTag.HOME)
 
         viewModel.permissionGranted.observe(this, Observer { isGranted ->
             if (isGranted == false) {
@@ -50,9 +52,20 @@ class MainActivity : AppCompatActivity() {
         viewModel.currentFragment.observe(this, Observer { fragmentTag ->
             fragmentTag?.let { tag ->
                 when (tag) {
-                    MainViewModel.FragmentTag.HOME -> replaceFragment(HomeFragment())
-                    MainViewModel.FragmentTag.SCAN -> replaceFragment(ScanFragment())
-                    MainViewModel.FragmentTag.LIST -> replaceFragment(ListFragment())
+                    MainViewModel.FragmentTag.HOME -> {
+                        replaceFragment(HomeFragment())
+                        setTopBarVisibility(MainViewModel.FragmentTag.HOME)
+                    }
+
+                    MainViewModel.FragmentTag.SCAN -> {
+                        replaceFragment(ScanFragment())
+                        setTopBarVisibility(MainViewModel.FragmentTag.SCAN)
+                    }
+
+                    MainViewModel.FragmentTag.LIST -> {
+                        replaceFragment(ListFragment())
+                        setTopBarVisibility(MainViewModel.FragmentTag.LIST)
+                    }
                 }
             }
         })
@@ -85,5 +98,19 @@ class MainActivity : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
+    }
+
+    private fun setTopBarVisibility(fragmentTag: MainViewModel.FragmentTag) {
+        when (fragmentTag) {
+            MainViewModel.FragmentTag.HOME, MainViewModel.FragmentTag.LIST -> {
+                binding.topBar.visibility = View.VISIBLE
+                binding.imgTopBar.visibility = View.VISIBLE
+            }
+
+            MainViewModel.FragmentTag.SCAN -> {
+                binding.topBar.visibility = View.GONE
+                binding.imgTopBar.visibility = View.GONE
+            }
+        }
     }
 }
