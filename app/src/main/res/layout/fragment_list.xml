@@ -12,6 +12,17 @@
         android:layout_marginTop="8dp"
         android:paddingBottom="8dp">
 
+        <ProgressBar
+            android:id="@+id/progressBarList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
         <TextView
             android:id="@+id/tv_list_rempah"
             android:layout_width="match_parent"
@@ -26,7 +37,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_spices"
             android:layout_width="match_parent"
-            android:layout_height="560dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:paddingBottom="8dp"

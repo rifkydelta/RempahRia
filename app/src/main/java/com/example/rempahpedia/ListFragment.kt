@@ -18,6 +18,8 @@ class ListFragment : Fragment() {
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
     private lateinit var rvSpices: RecyclerView
+    private lateinit var progressBar: View
+    private lateinit var tvListRempah: View
     private val viewModel: ListViewModel by viewModels()
 
     override fun onCreateView(
@@ -31,6 +33,12 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rvSpices = binding.rvSpices
+        progressBar = binding.progressBarList
+        tvListRempah = binding.tvListRempah
+
+        progressBar.visibility = View.VISIBLE
+        tvListRempah.visibility = View.GONE
+
         rvSpices.layoutManager = LinearLayoutManager(context)
         rvSpices.setHasFixedSize(true)
 
@@ -44,6 +52,10 @@ class ListFragment : Fragment() {
     }
 
     private fun showRecyclerList(spices: List<Spices>) {
+        progressBar.visibility = View.GONE
+        rvSpices.visibility = View.VISIBLE
+        tvListRempah.visibility = View.VISIBLE
+
         val listSpicesAdapter = ListSpicesAdapter(spices)
         rvSpices.adapter = listSpicesAdapter
 
