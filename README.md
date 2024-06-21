@@ -1,4 +1,4 @@
-# RempahPedia
+# RempahRia
 
 Capstone Project - Bangkit Academy Team **C241-PS229**
 ### 🚀 About This Project
@@ -7,7 +7,7 @@ Capstone Project - Bangkit Academy Team **C241-PS229**
 
 **Challenge in Spice Identification** However, identifying and differentiating various spices can be challenging, especially for those not familiar with them. Some spices are almost 90 percent similar, making recognition difficult.
 
-**RempahPedia: Android App Solution** We created “RempahPedia,” an Android-based application that uses a smartphone’s camera to capture real-time images of spices. These images are used for image recognition, powered by a Convolutional Neural Network (CNN) algorithm using the VGG16 technique for high accuracy in spice recognition.
+**RempahRia: Android App Solution** We created “RempahRiaia,” an Android-based application that uses a smartphone’s camera to capture real-time images of spices. These images are used for image recognition, powered by a Convolutional Neural Network (CNN) algorithm using the VGG16 technique for high accuracy in spice recognition.
 
 **Empowering Users** With advances in technology, RempahPedia is useful for anyone exploring local markets, experimenting in the kitchen, or seeking new recipe inspiration. The app empowers users to unlock the full potential of spices with precision and ease.
 
