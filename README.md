@@ -50,7 +50,7 @@ Click [here](https://github.com/rifkydelta/RempahRia/blob/Main/RempahRia.apk) to
   - Access to camera
 
 - **Installation:**
-  - Download the .apk file
+  - [Download](https://github.com/rifkydelta/RempahRia/blob/Main/RempahRia.apk) the .apk file
   - Install the app and happy using
 
 ## Features of RempahRia APP
