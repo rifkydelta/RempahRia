@@ -31,7 +31,6 @@ Click [here](https://github.com/rifkydelta/RempahRia/blob/Main/RempahRia.apk) to
   - Python
   - TensorFlow
   - Google Colab
-  - Roboflow
 
 - **Mobile Development:**
   - Figma
@@ -40,9 +39,8 @@ Click [here](https://github.com/rifkydelta/RempahRia/blob/Main/RempahRia.apk) to
 
 - **Cloud Computing:**
   - Google Cloud Run
-  - Firestore
   - Docker
-  - Express.js
+  - Flask
  
 ## Architekture Overview
 
