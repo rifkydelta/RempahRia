@@ -12,7 +12,7 @@
 ## RempahRia 
 
 <p align="center">
-  <img src="#" alt="RempahRia app preview" style="width:100%;">
+  <img src="https://github.com/rifkydelta/RempahRia/assets/68815594/19db733d-512c-4aff-b28b-cf70ef697cb3" alt="RempahRia app preview" style="width:100%;">
 </p>
 
 Spices play an important role in culinary traditions worldwide, adding flavor, aroma, and health benefits to dishes. However, identifying and differentiating various spices can be challenging, especially for those unfamiliar with them, as some spices are almost 90 percent similar. To address this, we created “RempahRia,” an Android app that uses a smartphone’s camera to capture real-time images of spices. Powered by a Convolutional Neural Network (CNN) algorithm with the VGG16 technique, it ensures high accuracy in spice recognition. With advancements in technology, RempahPedia empowers users exploring local markets, experimenting in the kitchen, or seeking new recipe inspiration, helping them unlock the full potential of spices with precision and ease.
@@ -42,12 +42,6 @@ Click [here](https://github.com/rifkydelta/RempahRia/blob/Main/RempahRia.apk) to
   - Docker
   - Flask
  
-## Architekture Overview
-
-<p align="center">
-  <img src="#" alt="Application architecture overview" style="width:100%;">
-</p>
-
 ## Getting Started
 
 - **Prerequisites:**
