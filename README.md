@@ -74,5 +74,5 @@ In our project is divided into four branches:
 | [Fachrurazi](https://www.linkedin.com/in/fachru-razi-ab6b41293/)               | [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/fachru-razi-ab6b41293/)   |
 | [Nabila Rizqi Mahardika](https://www.linkedin.com/in/nabila-rizqi/)   | [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nabila-rizqi/)     |
 | [Syahira Isnaeni Dewi](https://www.linkedin.com/in/syahira-isnaeni-dewi-b58290206/)     | [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/syahira-isnaeni-dewi-b58290206/)   |
-| [Laka Fatchan Mubina](#)      | [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](#)  |
+| [Laka Fatchan Mubina](https://www.instagram.com/fatchanmbn_/)      | [![Instagram](https://img.shields.io/badge/Instagram-900BF2)](https://www.instagram.com/fatchanmbn_/)  |
 | [Arindra Rifky Saputra](https://www.linkedin.com/in/arindra-rifky-saputra/)    | [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/arindra-rifky-saputra/)    |
